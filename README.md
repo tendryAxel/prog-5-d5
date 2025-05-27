@@ -1,16 +1,17 @@
-# Get Started
-Coffee Machine Management – By Axel
+# Coffee Machine Management
+*By Axel*
 
 ## Use Cases
-- Manage coffee
+- Manage and sell coffee through the machine
 
 ## Actions
-- Store coffee
-- Supply coffee
-- Supply water
+- Add coffee to storage
+- Refill coffee in the machine
+- Refill water in the machine
+- Sell coffee
 
-## Errors
+## Possible Errors
 - Coffee not found
-- Jirama power issues
-- Water not found
+- Power outage (Jirama)
+- Water not available
 - Insufficient funds
