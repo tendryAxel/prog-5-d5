@@ -25,8 +25,8 @@
 4. Serve the coffee to the user  
 5. Update inventory and financial records
 
-## Possible Errors
-- Coffee not found
-- Power outage (Jirama)
-- Water not available
+## Errors Management
 - Insufficient funds
+- Coffee not available
+- Water not available
+- Power outage (Jirama)
