@@ -6,6 +6,7 @@ import {
 } from "./src/service/coffeeService.ts";
 import db from "./src/repository/db.ts";
 import { coffeeStoredToString } from "./src/repository/model/Coffee.ts";
+import { InsufficientFundsError } from "./src/exception.ts";
 
 const term = terminalKit.terminal;
 
@@ -22,23 +23,34 @@ db.update({
   ],
 });
 
-term.singleColumnMenu(
-  getAllCoffees().map((coffee) => coffee.coffee.name),
-  { cancelable: true },
-  (error, response) => {
-    if (error) {
-      console.error(error);
-    }
+term.green(`Enter the your money`);
 
-    term("\n Your choice is: " + response.selectedText);
+term.inputField({}, (err, data) => {
+  if (err) {
+    console.error(err);
+    term.processExit(1);
+  }
 
-    dispenseCoffee(response.selectedText, 1);
+  if (Number(data) <= 10) throw new InsufficientFundsError();
 
-    term(
-      "\n The current coffee is " +
-        coffeeStoredToString(getCoffeeByName(response.selectedText)),
-    );
+  term.singleColumnMenu(
+    getAllCoffees().map((coffee) => coffee.coffee.name),
+    { cancelable: true },
+    (error, response) => {
+      if (error) {
+        console.error(error);
+      }
 
-    term.processExit(0);
-  },
-);
+      term("\n Your choice is: " + response.selectedText);
+
+      dispenseCoffee(response.selectedText, 1);
+
+      term(
+        "\n The current coffee is " +
+          coffeeStoredToString(getCoffeeByName(response.selectedText)),
+      );
+
+      term.processExit(0);
+    },
+  );
+});

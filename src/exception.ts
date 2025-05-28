@@ -7,3 +7,9 @@ export class MissingCoffeePodError extends Error {
     );
   }
 }
+
+export class InsufficientFundsError extends Error {
+  constructor() {
+    super();
+  }
+}
