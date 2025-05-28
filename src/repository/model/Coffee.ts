@@ -1,9 +1,9 @@
-type CoffeeTemplate = {
-    id: string;
-    name: string;
-}
+export type CoffeeTemplate = {
+  id: string;
+  name: string;
+};
 
-type CoffeeStored = {
-    coffee: CoffeeTemplate;
-    quantity: number;
-}
+export type CoffeeStored = {
+  coffee: CoffeeTemplate;
+  quantity: number;
+};
