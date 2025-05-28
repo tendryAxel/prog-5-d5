@@ -1,5 +1,4 @@
 export type CoffeeTemplate = {
-  id: string;
   name: string;
   pricePerLitre: number;
 };
@@ -7,4 +6,8 @@ export type CoffeeTemplate = {
 export type CoffeeStored = {
   coffee: CoffeeTemplate;
   litreQuantity: number;
+};
+
+export const coffeeStoredToString = (coffee: CoffeeStored) => {
+  return `Coffee Stored ${coffee.coffee.name}, ${coffee.coffee.pricePerLitre}$/L, ${coffee.litreQuantity}L`;
 };
